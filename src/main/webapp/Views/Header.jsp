@@ -14,10 +14,10 @@
 				<div class="col-sm-6">
 					<div class="contactinfo">
 						<ul class="nav nav-pills">
-							<li><a href="#"><i class="fa fa-phone"></i> +0966022701
+							<li><a href="#"><i class="fa fa-phone"></i> +969200494
 							</a></li>
 							<li><a href="#"><i class="fa fa-envelope"></i>
-									vannaph05296@fpt.edu.vn</a></li>
+									tuanltph04663@fpt.edu.vn</a></li>
 						</ul>
 					</div>
 				</div>
