@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Oct 21, 2017 1:18:00 PM by Hibernate Tools 5.1.0.Alpha1 -->
+<hibernate-mapping>
+    <class name="vn.edu.poly.tuanltph04663.model.Account" table="Account" catalog="CSDLBanHang" optimistic-lock="version">
+        <id name="idAccount" type="java.lang.Integer">
+            <column name="idAccount" />
+            <generator class="identity" />
+        </id>
+        <property name="userName" type="string">
+            <column name="UserName" length="45" not-null="true" />
+        </property>
+        <property name="passWord" type="string">
+            <column name="PassWord" length="45" not-null="true" />
+        </property>
+        <property name="email" type="string">
+            <column name="Email" length="100" not-null="true" />
+        </property>
+        <property name="type" type="string">
+            <column name="Type" length="45" />
+        </property>
+        <set name="carts" table="Cart" inverse="true" lazy="false" fetch="join">
+            <key>
+                <column name="Account_idAccount" not-null="true" unique="true" />
+            </key>
+            <one-to-many class="vn.edu.poly.tuanltph04663.model.Cart" />
+        </set>
+    </class>
+</hibernate-mapping>

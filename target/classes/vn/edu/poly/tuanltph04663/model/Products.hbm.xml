@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Oct 21, 2017 1:18:00 PM by Hibernate Tools 5.1.0.Alpha1 -->
+<hibernate-mapping>
+    <class name="vn.edu.poly.tuanltph04663.model.Products" table="Products" catalog="CSDLBanHang" optimistic-lock="version">
+        <id name="idProducts" type="java.lang.Integer">
+            <column name="idProducts" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="category" class="vn.edu.poly.tuanltph04663.model.Category" fetch="select">
+            <column name="Category_idCategory" not-null="true" />
+        </many-to-one>
+        <property name="image" type="string">
+            <column name="Image" length="200" not-null="true" />
+        </property>
+        <property name="nameProduct" type="string">
+            <column name="NameProduct" length="45" not-null="true" />
+        </property>
+        <property name="price" type="float">
+            <column name="Price" precision="12" scale="0" not-null="true" />
+        </property>
+        <set name="details" table="Detail" inverse="true" lazy="false" fetch="join">
+            <key>
+                <column name="Products_idProducts" not-null="true" />
+            </key>
+            <one-to-many class="vn.edu.poly.tuanltph04663.model.Detail" />
+        </set>
+    </class>
+</hibernate-mapping>

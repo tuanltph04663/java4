@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated Oct 21, 2017 1:18:00 PM by Hibernate Tools 5.1.0.Alpha1 -->
+<hibernate-mapping>
+    <class name="vn.edu.poly.tuanltph04663.model.Category" table="Category" catalog="CSDLBanHang" optimistic-lock="version">
+        <id name="idCategory" type="java.lang.Integer">
+            <column name="idCategory" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="category" class="vn.edu.poly.tuanltph04663.model.Category" fetch="select">
+            <column name="CategoryFather" />
+        </many-to-one>
+        <property name="nameCategory" type="string">
+            <column name="NameCategory" length="45" not-null="true" />
+        </property>
+        <set name="categories" table="Category" inverse="true" lazy="false" fetch="join">
+            <key>
+                <column name="CategoryFather" />
+            </key>
+            <one-to-many class="vn.edu.poly.tuanltph04663.model.Category" />
+        </set>
+        <set name="productses" table="Products" inverse="true" lazy="false" fetch="join">
+            <key>
+                <column name="Category_idCategory" not-null="true" />
+            </key>
+            <one-to-many class="vn.edu.poly.tuanltph04663.model.Products" />
+        </set>
+    </class>
+</hibernate-mapping>
