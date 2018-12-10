@@ -45,9 +45,8 @@ public class IndexServlet extends HttpServlet {
 		} else {
 			products = productsDAO.getAll();
 		}
-		
+
 		List<Category> categories = categoryDAO.getAll();
-		
 		request.setAttribute("products", products);
 		request.setAttribute("categories", categories);
 		request.getRequestDispatcher("/Views/home.jsp").forward(request, response);

@@ -1,4 +1,6 @@
-<%@ page import="java.util.List, vn.edu.poly.tuanltph04663.model.Detail"%>
+<%@page import="vn.edu.poly.tuanltph04663.model.Order"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ page isELIgnored="false"%>
 
 <!DOCTYPE html>
 <html>
@@ -22,54 +24,44 @@
 				<table class="table table-condensed">
 					<thead>
 						<tr class="cart_menu">
-							<td class="image">Item</td>
-							<td class="description"></td>
+							<td class="image">Image</td>
+							<td class="image">Name</td>
 							<td class="price">Price</td>
 							<td class="quantity">Quantity</td>
 							<td class="total">Total</td>
-							<td></td>
+							<td>Action</td>
 						</tr>
 					</thead>
-					
-					<tbody>
-						<%
-							Detail adsfsdf = (Detail) session.getAttribute("Cart");
-							List<Detail> list = CartDAO.DanhSach();
-							for (Detail gh : list) {
-						%>
-						<tr>
-							<td class="cart_product"><a href=""><img
-									src="images/home/<%=gh.getProducts().getImage()%>" alt=""></a></td>
-							<td class="cart_description">
-								<h4>
-									<a href=""><%=gh.getProducts().getNameProduct()%></a>
-								</h4>
 
-							</td>
-							<td class="cart_price">
-								<p><%=gh.getProducts().getPrice()%></p>
-							</td>
-							<td class="cart_quantity">
-								<div class="cart_quantity_button">
-									<a class="cart_quantity_up"
-										href="/Assignment/PlusToCartController?add=plus&idProducts=<%=gh.getProducts().getIdProducts()%>&idDetail=<%=gh.getIdDetail()%>">
-										+ </a> <input class="cart_quantity_input" type="text"
-										name="quantity" value="<%=gh.getQuality()%>"
-										autocomplete="off" size="2"> <a
-										class="cart_quantity_down"
-										href="/Assignment/SubToCartController?add=sub&idProducts=<%=gh.getProducts().getIdProducts()%>&idDetail=<%=gh.getIdDetail()%>">
-										- </a>
-								</div>
-							</td>
-							<td class="cart_total">
-								<p class="cart_total_price"><%=gh.getProducts().getPrice() * gh.getQuality()%></p>
-							</td>
-							<td class="cart_delete"><a class="cart_quantity_delete"
-								href=""><i class="fa fa-times"></i></a></td>
-						</tr>
-						<%
-							}
-						%>
+					<tbody>
+						<c:forEach var="o" items="${sessionScope.order.items}">
+							<tr>
+								<td class="cart_product">
+									<img src="images/home/${o.product.image}" alt="">
+								</td>
+								
+								<td class="cart_description">
+									<h4>${o.product.nameProduct}</h4>
+								</td>
+								
+								<td class="cart_price">
+									<p>${o.product.price}</p>
+								</td>
+								
+								<td class="cart_quantity">
+									<p>${o.amount}</p>
+								</td>
+								
+								<td class="cart_total">
+									<p class="cart_total_price">${o.getPrice()}</p>
+								</td>
+								
+								<td class="cart_delete">
+									<a class="cart_quantity_delete" href="/Assignment/removefromcart?productId=${o.product.idProducts}"><i class="fa fa-times"></i></a>
+								</td>
+							</tr>
+						</c:forEach>
+							
 					</tbody>
 				</table>
 			</div>

@@ -78,7 +78,7 @@
 											<h2>$ ${sp.price}</h2>
 											<p>${sp.nameProduct}</p>
 											<a
-												href="/Assignment/InsertToCartController?add=insert&idProducts=${sp.idProducts }"
+												href="/Assignment/addtocart?productId=${sp.idProducts}"
 												class="btn btn-default add-to-cart"><i
 												class="fa fa-shopping-cart"></i>Add to cart</a>
 										</div>
@@ -94,7 +94,7 @@
 												<h2>$ ${sp.price}</h2>
 												<p>${sp.nameProduct}</p>
 												<a
-													href="/Assignment/InsertToCartController?add=insert&idProducts=${sp.idProducts }"
+													href="/Assignment/addtocart?productId=${sp.idProducts}"
 													class="btn btn-default add-to-cart"><i
 													class="fa fa-shopping-cart"></i>Add to cart</a>
 											</div>
