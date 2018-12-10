@@ -1,3 +1,5 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <header id="header">
 
 	<div class="header_top">
@@ -35,7 +37,7 @@
 			<div class="row">
 				<div class="col-sm-4">
 					<div class="logo pull-left">
-						<a href="Home.jsp"><img src="images/home/logo.png" alt="" /></a>
+						<a href="/Assignment/index"><img src="images/home/logo.png" alt="" /></a>
 					</div>
 					<div class="btn-group pull-right">
 						<div class="btn-group">
@@ -67,15 +69,16 @@
 							<li><a href="#"><i class="fa fa-user"></i> Account</a></li>
 							<li><a href="#"><i class="fa fa-star"></i> Wishlist</a></li>
 
-							<li><a href="CheckOut.jsp"><i class="fa fa-crosshairs"></i>
+							<li><a href="/Assignment/index"><i class="fa fa-crosshairs"></i>
 									Checkout</a></li>
-							<li><a href="Cart.jsp"><i class="fa fa-shopping-cart"></i>
+							<li><a href="/Assignment/cart"><i class="fa fa-shopping-cart"></i>
 									Cart</a></li>
-							<li><a href="Login.jsp"><i class="fa fa-lock"></i> Login</a></li>
-							<li><a href="Login.jsp"><i class="fa fa-lock"></i>
+							<li><a href="/Assignment/login"><i class="fa fa-lock"></i>
+									Login</a></li>
+							<li><a href="/Assignment/logout"><i class="fa fa-lock"></i>
 									Logout</a></li>
 
-							<li><a href="#"><i class=""></i>${sessionScope.Account}</a></li>
+							<li><a href="#"><i class="fa fa-user"></i>${sessionScope.Account}</a></li>
 							<c:if test="${empty sessionScope.Account}">
 								${""}
 							</c:if>
@@ -102,16 +105,15 @@
 					</div>
 					<div class="mainmenu pull-left">
 						<ul class="nav navbar-nav collapse navbar-collapse">
-							<li><a href="Home.jsp">Home</a></li>
+							<li><a href="/Assignment/index">Home</a></li>
 							<li class="dropdown"><a href="#">Shop<i
 									class="fa fa-angle-down"></i></a>
 								<ul role="menu" class="sub-menu">
-									<li><a
-										href="/Assignment/ControllerPhanTrang?start=0&end=6">Products</a></li>
-									<li><a href="Product-details">Product Details</a></li>
-									<li><a href="CheckOut.jsp">Checkout</a></li>
-									<li><a href="Cart.jsp">Cart</a></li>
-									<li><a href="Login.jsp">Login</a></li>
+									<li><a href="/Assignment/index">Products</a></li>
+									<li><a href="/Assignment/index">Product Details</a></li>
+									<li><a href="/Assignment/index">Checkout</a></li>
+									<li><a href="/Assignment/cart">Cart</a></li>
+									<li><a href="/Assignment/login">Login</a></li>
 								</ul></li>
 							<li class="dropdown"><a href="#">Blog<i
 									class="fa fa-angle-down"></i></a>
@@ -120,7 +122,7 @@
 									<li><a href="#">Blog Single</a></li>
 								</ul></li>
 
-							<li><a href="Contact-us.jsp">Contact</a></li>
+							<li><a href="#">Contact</a></li>
 						</ul>
 					</div>
 				</div>

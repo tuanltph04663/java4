@@ -18,64 +18,10 @@
   	<servlet-class>vn.edu.poly.tuanltph04663.controller.ControllerGioHang</servlet-class>
   </servlet>
   <servlet>
-  	<servlet-name>CheckLogin</servlet-name>
-  	<display-name>CheckLogin</display-name>
-  	<description></description>
-  	<servlet-class>vn.edu.poly.tuanltph04663.controller.CheckLogin</servlet-class>
-  </servlet>
-  <servlet>
   	<servlet-name>ControllerProducts</servlet-name>
   	<display-name>ControllerProducts</display-name>
   	<description></description>
   	<servlet-class>vn.edu.poly.tuanltph04663.controller.ControllerProducts</servlet-class>
-  </servlet>
-  <servlet>
-  	<servlet-name>ListProductsController</servlet-name>
-  	<display-name>ListProductsController</display-name>
-  	<description></description>
-  	<servlet-class>vn.edu.poly.tuanltph04663.controller.ListProductsController</servlet-class>
-  </servlet>
-  <servlet>
-  	<servlet-name>ListAccountController</servlet-name>
-  	<display-name>ListAccountController</display-name>
-  	<description></description>
-  	<servlet-class>vn.edu.poly.tuanltph04663.controller.ListAccountController</servlet-class>
-  </servlet>
-  <servlet>
-  	<servlet-name>CreateProductsController</servlet-name>
-  	<display-name>CreateProductsController</display-name>
-  	<description></description>
-  	<servlet-class>vn.edu.poly.tuanltph04663.controller.CreateProductsController</servlet-class>
-  </servlet>
-  <servlet>
-  	<servlet-name>CreatAccountController</servlet-name>
-  	<display-name>CreatAccountController</display-name>
-  	<description></description>
-  	<servlet-class>vn.edu.poly.tuanltph04663.controller.CreatAccountController</servlet-class>
-  </servlet>
-  <servlet>
-  	<servlet-name>EditProductsController</servlet-name>
-  	<display-name>EditProductsController</display-name>
-  	<description></description>
-  	<servlet-class>vn.edu.poly.tuanltph04663.controller.EditProductsController</servlet-class>
-  </servlet>
-  <servlet>
-  	<servlet-name>EditAccountController</servlet-name>
-  	<display-name>EditAccountController</display-name>
-  	<description></description>
-  	<servlet-class>vn.edu.poly.tuanltph04663.controller.EditAccountController</servlet-class>
-  </servlet>
-  <servlet>
-  	<servlet-name>DeleteProductsController</servlet-name>
-  	<display-name>DeleteProductsController</display-name>
-  	<description></description>
-  	<servlet-class>vn.edu.poly.tuanltph04663.controller.DeleteProductsController</servlet-class>
-  </servlet>
-  <servlet>
-  	<servlet-name>DeleteAccountController</servlet-name>
-  	<display-name>DeleteAccountController</display-name>
-  	<description></description>
-  	<servlet-class>vn.edu.poly.tuanltph04663.controller.DeleteAccountController</servlet-class>
   </servlet>
   <servlet>
   	<servlet-name>InsertToCartController</servlet-name>
@@ -95,12 +41,6 @@
   	<description></description>
   	<servlet-class>vn.edu.poly.tuanltph04663.controller.SubToCartController</servlet-class>
   </servlet>
-  <servlet>
-  	<servlet-name>Register</servlet-name>
-  	<display-name>Register</display-name>
-  	<description></description>
-  	<servlet-class>vn.edu.poly.tuanltph04663.controller.Register</servlet-class>
-  </servlet>
   <servlet-mapping>
   	<servlet-name>ControllerPhanTrang</servlet-name>
   	<url-pattern>/ControllerPhanTrang</url-pattern>
@@ -110,44 +50,8 @@
   	<url-pattern>/ControllerGioHang</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
-  	<servlet-name>CheckLogin</servlet-name>
-  	<url-pattern>/CheckLogin</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
   	<servlet-name>ControllerProducts</servlet-name>
   	<url-pattern>/ControllerProducts</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-  	<servlet-name>ListProductsController</servlet-name>
-  	<url-pattern>/ListProductsController</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-  	<servlet-name>ListAccountController</servlet-name>
-  	<url-pattern>/ListAccountController</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-  	<servlet-name>CreateProductsController</servlet-name>
-  	<url-pattern>/CreateProductsController</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-  	<servlet-name>CreatAccountController</servlet-name>
-  	<url-pattern>/CreatAccountController</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-  	<servlet-name>EditProductsController</servlet-name>
-  	<url-pattern>/EditProductsController</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-  	<servlet-name>EditAccountController</servlet-name>
-  	<url-pattern>/EditAccountController</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-  	<servlet-name>DeleteProductsController</servlet-name>
-  	<url-pattern>/DeleteProductsController</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-  	<servlet-name>DeleteAccountController</servlet-name>
-  	<url-pattern>/DeleteAccountController</url-pattern>
   </servlet-mapping>
   <servlet-mapping>
   	<servlet-name>InsertToCartController</servlet-name>
@@ -160,9 +64,5 @@
   <servlet-mapping>
   	<servlet-name>SubToCartController</servlet-name>
   	<url-pattern>/SubToCartController</url-pattern>
-  </servlet-mapping>
-  <servlet-mapping>
-  	<servlet-name>Register</servlet-name>
-  	<url-pattern>/Register</url-pattern>
   </servlet-mapping>
 </web-app>

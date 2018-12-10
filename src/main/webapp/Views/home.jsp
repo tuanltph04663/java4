@@ -15,7 +15,8 @@
 	<section id="slider">
 		<div class="container">
 			<div class="row">
-				<div class="col-sm-12"></div>
+				<div class="col-sm-12">
+				</div>
 			</div>
 		</div>
 	</section>

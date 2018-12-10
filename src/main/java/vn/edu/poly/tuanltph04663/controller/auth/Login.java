@@ -1,8 +1,9 @@
-package vn.edu.poly.tuanltph04663.controller;
+package vn.edu.poly.tuanltph04663.controller.auth;
 
 import java.io.IOException;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -11,18 +12,15 @@ import javax.servlet.http.HttpSession;
 import vn.edu.poly.tuanltph04663.dao.AccountDAO;
 import vn.edu.poly.tuanltph04663.model.Account;
 
-/**
- * Servlet implementation class CheckLogin
- */
-public class CheckLogin extends HttpServlet {
+@WebServlet(urlPatterns = { "/login", "/logout" })
+public class Login extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private AccountDAO accountDAO;
-	
-	
+
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public CheckLogin() {
+	public Login() {
 		super();
 		this.accountDAO = new AccountDAO();
 	}
@@ -33,8 +31,14 @@ public class CheckLogin extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doPost(request, response);
+		if (request.getServletPath().equals("/logout")) {
+			// clear Account session
+			request.getSession().removeAttribute("Account");
+
+			response.sendRedirect("index");
+			return;
+		}
+		request.getRequestDispatcher("/Views/login.jsp").forward(request, response);
 	}
 
 	/**
@@ -43,25 +47,26 @@ public class CheckLogin extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		try {
 			HttpSession session = request.getSession();
 			String username = request.getParameter("username");
 			String password = request.getParameter("password");
 			Account account = accountDAO.checkLogin(username, password);
-			
+
 			/**
 			 * if have no account in database return
 			 */
-			if (account == null) {
+			if (null == account) {
+				doGet(request, response);
 				return;
 			}
-			
-			if (username.equals(account.getUserName()) && password.equals(account.getPassword())) {
-				session.setAttribute("Account", username);
-				response.sendRedirect("/Assignment/Views/Shop.jsp");
-			}
 
+			if (account.isValidUser(username, password)) {
+				session.setAttribute("Account", username);
+
+				// to index page
+				response.sendRedirect("index");
+			}
 		} catch (Exception e) {
 			System.out.println(e);
 		}

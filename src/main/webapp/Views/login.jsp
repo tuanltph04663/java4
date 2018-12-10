@@ -18,7 +18,7 @@
 					<div class="login-form">
 						<!--login form-->
 						<h2>Login to your account</h2>
-						<form action="/Assignment/CheckLogin" method="get">
+						<form action="/Assignment/login" method="post">
 
 							<input type="text" name="username" placeholder="UserName" /> <input
 								type="password" name="password" placeholder="Password" /> <span>
@@ -37,7 +37,7 @@
 					<div class="signup-form">
 						<!--sign up form-->
 						<h2>New User Signup!</h2>
-						<form action="/Assignment/Register" method="post">
+						<form action="/Assignment/register" method="post">
 							<input type="text" name="username" placeholder="Name" /> <input
 								type="email" name="email" placeholder="Email Address" /> <input
 								type="password" name="password" placeholder="Password" />
@@ -50,7 +50,6 @@
 		</div>
 	</section>
 	<!--/form-->
-
 
 	<!-- import _footer.jsp -->
 	<%@include file="common/_footer.jsp"%>

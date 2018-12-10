@@ -68,6 +68,17 @@ public class Account implements java.io.Serializable {
 	public void setType(String type) {
 		this.type = type;
 	}
+	
+	/**
+	 * Check login
+	 * 
+	 * @param userName
+	 * @param password
+	 * @return
+	 */
+	public boolean isValidUser(String userName, String password) {
+		return this.getUserName().equals(userName) && this.getPassword().equals(password);
+	}
 
 	@Override
 	public String toString() {
