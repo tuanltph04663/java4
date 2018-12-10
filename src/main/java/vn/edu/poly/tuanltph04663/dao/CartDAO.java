@@ -6,7 +6,7 @@ import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
-import vn.edu.poly.tuanltph04663.model.Cart;
+import vn.edu.poly.tuanltph04663.model.Order;
 import vn.edu.poly.tuanltph04663.model.Detail;
 import vn.edu.poly.tuanltph04663.model.Products;
 import vn.edu.poly.tuanltph04663.util.HibernateUtil;
@@ -122,11 +122,11 @@ public class CartDAO {
 	}
 	
 	//Thong tin gio hang
-	public static Cart ThongTin(int id) {
+	public static Order ThongTin(int id) {
 		try {
 			Session session = sf.openSession();
 			session.beginTransaction();
-			Cart gh = (Cart) session.get(Cart.class, id);
+			Order gh = (Order) session.get(Order.class, id);
 			session.close();
 			return gh;
 		} catch (Exception e) {

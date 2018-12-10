@@ -20,5 +20,26 @@
         <property name="price" type="float">
             <column name="Price" precision="12" scale="0" not-null="true" />
         </property>
+        <property name="storge" type="string">
+            <column name="storge" length="45" not-null="false" />
+        </property>
+        <property name="weight" type="string">
+            <column name="weight" length="45" not-null="false" />
+        </property>
+        <property name="descrtiption" type="string">
+            <column name="descrtiption" length="500" not-null="false" />
+        </property>
+        <property name="os" type="string">
+            <column name="os" length="45" not-null="false" />
+        </property>
+        <property name="cpu" type="string">
+            <column name="cpu" length="45" not-null="false" />
+        </property>
+        <property name="ram" type="string">
+            <column name="ram" length="45" not-null="false" />
+        </property>
+        <property name="color" type="string">
+            <column name="color" length="45" not-null="false" />
+        </property>
     </class>
 </hibernate-mapping>

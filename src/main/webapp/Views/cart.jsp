@@ -1,4 +1,4 @@
-<%-- <%@ page import="java.util.List, vn.edu.poly.tuanltph04663.model.Detail"%>
+<%@ page import="java.util.List, vn.edu.poly.tuanltph04663.model.Detail"%>
 
 <!DOCTYPE html>
 <html>
@@ -30,6 +30,7 @@
 							<td></td>
 						</tr>
 					</thead>
+					
 					<tbody>
 						<%
 							Detail adsfsdf = (Detail) session.getAttribute("Cart");
@@ -145,4 +146,4 @@
 	<!-- import _head.jsp -->
 	<%@include file="common/_external_js.jsp"%>
 </body>
-</html> --%>
+</html>

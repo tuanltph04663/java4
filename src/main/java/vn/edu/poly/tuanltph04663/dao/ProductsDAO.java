@@ -11,7 +11,26 @@ import vn.edu.poly.tuanltph04663.model.Products;
 public class ProductsDAO implements IDao<Products> {
 
 	private static final String SELECT_ALL_QUERY = "FROM Products";
+	private static final String GET_ALL_PRODUCT_BY_CATEGORY = "FROM Products p"
+			+ " WHERE p.categoryId = :categoryId";
 
+	@SuppressWarnings("unchecked")
+	public List<Products> getAllByCategory(int categoryId) {
+		Session session = SESSION_FACTORY.openSession();
+		List<Products> result = new ArrayList<>();
+		try {
+			session.beginTransaction();
+			Query query = session.createQuery(GET_ALL_PRODUCT_BY_CATEGORY);
+			query.setParameter("categoryId", categoryId);
+			result = (List<Products>) query.list();
+			session.close();
+			return result;
+		} catch (Exception e) {
+			System.out.println(e);
+			return null;
+		}
+	}
+	
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Products> getAll() {

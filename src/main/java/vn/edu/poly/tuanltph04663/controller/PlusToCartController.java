@@ -1,7 +1,6 @@
 package vn.edu.poly.tuanltph04663.controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -10,10 +9,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import vn.edu.poly.tuanltph04663.dao.CartDAO;
-import vn.edu.poly.tuanltph04663.dao.ProductsDAO;
-import vn.edu.poly.tuanltph04663.model.Cart;
-import vn.edu.poly.tuanltph04663.model.Detail;
-import vn.edu.poly.tuanltph04663.model.Products;
 
 /**
  * Servlet implementation class PlusToCartController
@@ -47,12 +42,12 @@ public class PlusToCartController extends HttpServlet {
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		try {
-			PrintWriter out = response.getWriter();
 			HttpSession session = request.getSession();
-			String email = request.getParameter("email");
-			String password = request.getParameter("password");
 			String action = request.getParameter("add");
-			int idProducts = Integer.parseInt(request.getParameter("idProducts"));
+//			PrintWriter out = response.getWriter();
+//			String email = request.getParameter("email");
+//			String password = request.getParameter("password");
+//			int idProducts = Integer.parseInt(request.getParameter("idProducts"));
 
 			if (session.getAttribute("Account") == null) {
 				response.sendRedirect("/Assignment/Views/Login.jsp");

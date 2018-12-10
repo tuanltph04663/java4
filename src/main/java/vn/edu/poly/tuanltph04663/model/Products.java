@@ -12,6 +12,15 @@ public class Products implements java.io.Serializable {
 	private String nameProduct;
 	private float price;
 
+	// product detail
+	private String storge;
+	private String weight;
+	private String descrtiption;
+	private String os;
+	private String cpu;
+	private String ram;
+	private String color;
+
 	public Products() {
 	}
 
@@ -69,10 +78,68 @@ public class Products implements java.io.Serializable {
 		this.categoryId = categoryId;
 	}
 
+	public String getStorge() {
+		return storge;
+	}
+
+	public void setStorge(String storge) {
+		this.storge = storge;
+	}
+
+	public String getWeight() {
+		return weight;
+	}
+
+	public void setWeight(String weight) {
+		this.weight = weight;
+	}
+
+	public String getDescrtiption() {
+		return descrtiption;
+	}
+
+	public void setDescrtiption(String descrtiption) {
+		this.descrtiption = descrtiption;
+	}
+
+	public String getOs() {
+		return os;
+	}
+
+	public void setOs(String os) {
+		this.os = os;
+	}
+
+	public String getCpu() {
+		return cpu;
+	}
+
+	public void setCpu(String cpu) {
+		this.cpu = cpu;
+	}
+
+	public String getRam() {
+		return ram;
+	}
+
+	public void setRam(String ram) {
+		this.ram = ram;
+	}
+
+	public String getColor() {
+		return color;
+	}
+
+	public void setColor(String color) {
+		this.color = color;
+	}
+
 	@Override
 	public String toString() {
 		return "Products [idProducts=" + idProducts + ", categoryId=" + categoryId + ", image=" + image
-				+ ", nameProduct=" + nameProduct + ", price=" + price + "]";
+				+ ", nameProduct=" + nameProduct + ", price=" + price + ", storge=" + storge + ", weight=" + weight
+				+ ", descrtiption=" + descrtiption + ", os=" + os + ", cpu=" + cpu + ", ram=" + ram + ", color=" + color
+				+ "]";
 	}
 
 }
