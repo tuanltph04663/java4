@@ -1,48 +1,55 @@
-<%@include file="Common.jsp" %>
+<%-- <%@include file="Common.jsp"%>
 <jsp:include page="Common.jsp"></jsp:include>
 <c:set var="pageTitle" value="Create New Product" scope="page"></c:set>
 <!DOCTYPE html>
 <html>
 <head>
 
-	
-	<script type="text/javascript">
-		$(document).ready( function() {
-			$(document).on('change', '.btn-file :file', function() {
-				var input = $(this),
-					label = input.val().replace(/\\/g, '/').replace(/.*\//, '');
-				input.trigger('fileselect', [label]);
-			});
-	
-			$('.btn-file :file').on('fileselect', function(event, label) {
-	
-				var	input = $(this).parents('.input-group').find(':text'),
-					log = label;
-	
-				if(input.length) {
-					input.val(log);
-				} else {
-					if( log ) alert(log);
-				}
-			});
 
-			function readURL(input) {
-				if (input.files && input.files[0]) {
-					var reader = new FileReader();
+<script type="text/javascript">
+	$(document).ready(
+			function() {
+				$(document).on(
+						'change',
+						'.btn-file :file',
+						function() {
+							var input = $(this), label = input.val().replace(
+									/\\/g, '/').replace(/.*\//, '');
+							input.trigger('fileselect', [ label ]);
+						});
 
-					reader.onload = function (e) {
-						$('#img-upload').attr('src', e.target.result);
+				$('.btn-file :file').on(
+						'fileselect',
+						function(event, label) {
+
+							var input = $(this).parents('.input-group').find(
+									':text'), log = label;
+
+							if (input.length) {
+								input.val(log);
+							} else {
+								if (log)
+									alert(log);
+							}
+						});
+
+				function readURL(input) {
+					if (input.files && input.files[0]) {
+						var reader = new FileReader();
+
+						reader.onload = function(e) {
+							$('#img-upload').attr('src', e.target.result);
+						}
+
+						reader.readAsDataURL(input.files[0]);
 					}
-
-					reader.readAsDataURL(input.files[0]);
 				}
-			}
-	
-			$("#image").change(function(){
-				readURL(this);
-			}); 	
-		});
-	</script>
+
+				$("#image").change(function() {
+					readURL(this);
+				});
+			});
+</script>
 </head>
 <body>
 	<div class="container">
@@ -52,51 +59,60 @@
 			<h1 class="page-title">${pageTitle}</h1>
 
 			<c:if test="${hasError}">
-				<div class="alert alert-danger alert-dismissible fade show" role="alert">
-					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+				<div class="alert alert-danger alert-dismissible fade show"
+					role="alert">
+					<button type="button" class="close" data-dismiss="alert"
+						aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
 					<strong>Opps!</strong> ${errMessage}
 				</div>
 			</c:if>
-		
+
 			<c:if test="${hasInvalid}">
-				<div class="alert alert-warning alert-dismissible fade show" role="alert">
-					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+				<div class="alert alert-warning alert-dismissible fade show"
+					role="alert">
+					<button type="button" class="close" data-dismiss="alert"
+						aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
 					<strong>Opps!</strong> Please correct invalid input.
 				</div>
 			</c:if>
 
-			<form action="<c:url value="/create-product" />" method="post" enctype="multipart/form-data">
+			<form action="<c:url value="/create-product" />" method="post"
+				enctype="multipart/form-data">
 
 				<div class="row">
 					<div class="col-md">
 
-						<div class="form-group <c:if test="${not empty errCode}">has-danger</c:if>">
-							<label for="code">Code:</label>
-							<input type="text" class="form-control" name="code" id="code" placeholder="Code">
+						<div
+							class="form-group <c:if test="${not empty errCode}">has-danger</c:if>">
+							<label for="code">Code:</label> <input type="text"
+								class="form-control" name="code" id="code" placeholder="Code">
 							<c:if test="${not empty errCode}">
 								<div class="form-control-feedback">${errCode}</div>
 							</c:if>
 						</div>
 
-						<div class="form-group <c:if test="${not empty errName}">has-danger</c:if>">
-							<label for="name">Name:</label>
-							<input type="text" class="form-control" name="name" id="name" placeholder="Name">
+						<div
+							class="form-group <c:if test="${not empty errName}">has-danger</c:if>">
+							<label for="name">Name:</label> <input type="text"
+								class="form-control" name="name" id="name" placeholder="Name">
 							<c:if test="${not empty errName}">
 								<div class="form-control-feedback">${errName}</div>
 							</c:if>
 						</div>
 
-						<div class="form-group <c:if test="${not empty errFatherId}">has-danger</c:if>">
-							<label for="fatherId">Category:</label>
-							<select class="form-control" name="categoryId" id="categoryId">
+						<div
+							class="form-group <c:if test="${not empty errFatherId}">has-danger</c:if>">
+							<label for="fatherId">Category:</label> <select
+								class="form-control" name="categoryId" id="categoryId">
 								<c:forEach var="category" items="${listCategories}">
 									<option value="${category.id}">${category.name}</option>
 									<c:forEach var="subCategory" items="${category.subCategories}">
-										<option value="${subCategory.id}">- ${subCategory.name}</option>
+										<option value="${subCategory.id}">-
+											${subCategory.name}</option>
 									</c:forEach>
 								</c:forEach>
 							</select>
@@ -105,9 +121,11 @@
 							</c:if>
 						</div>
 
-						<div class="form-group <c:if test="${not empty errUnitPrice}">has-danger</c:if>">
-							<label for="unitPrice">Unit Price:</label>
-							<input type="text" class="form-control" name="unitPrice" id="unitPrice" placeholder="Unit Price">
+						<div
+							class="form-group <c:if test="${not empty errUnitPrice}">has-danger</c:if>">
+							<label for="unitPrice">Unit Price:</label> <input type="text"
+								class="form-control" name="unitPrice" id="unitPrice"
+								placeholder="Unit Price">
 							<c:if test="${not empty errUnitPrice}">
 								<div class="form-control-feedback">${errUnitPrice}</div>
 							</c:if>
@@ -119,14 +137,13 @@
 						<div class="form-group">
 							<label>Upload Image</label>
 							<div class="input-group">
-								<span class="input-group-btn">
-									<span class="btn btn-primary btn-file">
-										Browse <input type="file" id="image" name="image">
-									</span>
+								<span class="input-group-btn"> <span
+									class="btn btn-primary btn-file"> Browse <input
+										type="file" id="image" name="image">
 								</span>
-								<input type="text" class="form-control" readonly>
+								</span> <input type="text" class="form-control" readonly>
 							</div>
-							<img id='img-upload'/>
+							<img id='img-upload' />
 						</div>
 					</div>
 				</div>
@@ -142,4 +159,4 @@
 
 	</div>
 </body>
-</html>
+</html> --%>

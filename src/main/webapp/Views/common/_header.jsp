@@ -1,12 +1,5 @@
+<header id="header">
 
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
-<%@include file="Common.jsp"%>
-<jsp:include page="Common.jsp"></jsp:include>
-</head>
-<body>
-	<header id="header"><!--header-->
 	<div class="header_top">
 		<!--header_top-->
 		<div class="container">
@@ -14,8 +7,7 @@
 				<div class="col-sm-6">
 					<div class="contactinfo">
 						<ul class="nav nav-pills">
-							<li><a href="#"><i class="fa fa-phone"></i> +969200494
-							</a></li>
+							<li><a href="#"><i class="fa fa-phone"></i> +969200494 </a></li>
 							<li><a href="#"><i class="fa fa-envelope"></i>
 									tuanltph04663@fpt.edu.vn</a></li>
 						</ul>
@@ -140,7 +132,6 @@
 			</div>
 		</div>
 	</div>
-	<!--/header-bottom--> </header>
-	<!--/header-->
-</body>
-</html>
+	<!--/header-bottom-->
+
+</header>
