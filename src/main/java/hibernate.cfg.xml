@@ -13,7 +13,6 @@
         <property name="hibernate.search.autoregister_listeners">false</property>
         <property name="hibernate.validator.apply_to_ddl">false</property>
         <mapping resource="vn/edu/poly/tuanltph04663/model/Detail.hbm.xml" />
-        <mapping resource="vn/edu/poly/tuanltph04663/model/ProductDetail.hbm.xml" />
         <mapping resource="vn/edu/poly/tuanltph04663/model/Category.hbm.xml" />
         <mapping resource="vn/edu/poly/tuanltph04663/model/Cart.hbm.xml" />
         <mapping resource="vn/edu/poly/tuanltph04663/model/Account.hbm.xml" />
