@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="vn.edu.poly.tuanltph04663.model.ProductDetail" table="product_detail" catalog="CSDLBanHang" optimistic-lock="version">
+        <id name="product_id" type="java.lang.Integer">
+            <column name="productId" />
+        </id>
+        <!-- <property name="categoryId" type="java.lang.Integer">
+            <column name="Category_idCategory" not-null="true" />
+        </property>
+        <property name="image" type="string">
+            <column name="Image" length="200" not-null="true" />
+        </property>
+        <property name="nameProduct" type="string">
+            <column name="NameProduct" length="45" not-null="true" />
+        </property>
+        <property name="price" type="float">
+            <column name="Price" precision="12" scale="0" not-null="true" />
+        </property> -->
+    </class>
+</hibernate-mapping>

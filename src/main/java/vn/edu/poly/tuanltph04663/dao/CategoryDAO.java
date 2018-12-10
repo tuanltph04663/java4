@@ -5,142 +5,86 @@ import java.util.List;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 
 import vn.edu.poly.tuanltph04663.model.Category;
-import vn.edu.poly.tuanltph04663.util.HibernateUtil;
 
-public class CategoryDAO {
+public class CategoryDAO implements IDao<Category> {
 
-	public static final SessionFactory sf = HibernateUtil.getSessionFactory();
+	private static final String SELECT_ALL_QUERY = "FROM Category";
 
-	// Lấy toàn bộ sản phẩm
-	public static List<Category> DanhSach() {
-		Session session = sf.openSession();
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Category> getAll() {
+		Session session = SESSION_FACTORY.openSession();
+		List<Category> result = new ArrayList<>();
 		try {
-			List<Category> danhsach = null;
-
 			session.beginTransaction();
-			String hql = "from Category";
-			Query query = session.createQuery(hql);
-			danhsach = query.list();
+			Query query = session.createQuery(SELECT_ALL_QUERY);
+			result = (List<Category>) query.list();
 			session.close();
-			return danhsach;
+			return result;
 
 		} catch (Exception e) {
 			System.out.println(e);
-
-			return null;
+			return result;
 		}
-
 	}
-	// lấy thông tin chi tiết của 1 sản phẩm
 
-	public static Category ThongTin(int id) {
+	@Override
+	public Category getById(int id) {
+		Session session = SESSION_FACTORY.openSession();
 		try {
-			Session session = sf.openSession();
 			session.beginTransaction();
-			Category dt = (Category) session.get(Category.class, id);
+			Category category = (Category) session.get(Category.class, id);
 			session.close();
-			return dt;
+			return category;
 		} catch (Exception e) {
 			System.out.println(e.toString());
 			return null;
 		}
 	}
-	// thêm sản phẩm
 
-	public static boolean ThemCategory(Category dt) {
-		Session session = sf.openSession();
+	@Override
+	public void insert(Category t) {
+		Session session = SESSION_FACTORY.openSession();
 		try {
 			session.beginTransaction();
-			session.save(dt);
+			session.save(t);
 			session.getTransaction().commit();
-			return true;
 		} catch (Exception e) {
 			session.getTransaction().rollback();
-			return false;
 		} finally {
 			session.close();
 		}
 	}
-	// sửa thông tin sản phẩm
 
-	public static boolean UpdateTT(Category sp) {
-		Session session = sf.openSession();
+	@Override
+	public void update(Category t) {
+		Session session = SESSION_FACTORY.openSession();
 		try {
 			session.beginTransaction();
-			session.update(sp);
+			session.update(t);
 			session.getTransaction().commit();
-			return true;
 		} catch (Exception e) {
 			System.out.println(e);
 			session.getTransaction().rollback();
-			return false;
 		} finally {
 			session.close();
 		}
 	}
-	// xóa sản phẩm
 
-	public static boolean XoaCategory(int id) {
-		Session session = sf.openSession();
-		Category dt = CategoryDAO.ThongTin(id);
-		if (dt == null) {
-			return false;
-		}
+	@Override
+	public void delete(Category t) {
+		Session session = SESSION_FACTORY.openSession();
 		try {
 			session.beginTransaction();
-			session.delete(dt);
+			session.delete(t);
 			session.getTransaction().commit();
-			return true;
 		} catch (Exception e) {
 			session.getTransaction().rollback();
-			return false;
 		} finally {
 			session.close();
 		}
-	}
-
-	// lấy số sản phẩm tính từ
-	public static List<Category> SoCategory(List<Category> list, int n, int m) {
-		try {
-
-			List<Category> result = new ArrayList<>();
-			for (int i = n; i < m; i++) {
-				result.add(list.get(i));
-			}
-			return result;
-		} catch (Exception e) {
-			return null;
-		}
-
-	}
-
-	public static List<Category> SoCategory(int n, int m) {
-		try {
-
-			List<Category> danhsach = null;
-			Session session = sf.openSession();
-			session.beginTransaction();
-			String hql = "from Category";
-			Query query = session.createQuery(hql);
-			query.setFirstResult(n);
-			query.setMaxResults(m);
-			danhsach = query.list();
-			session.close();
-			return danhsach;
-
-		} catch (Exception e) {
-			return null;
-		}
-
-	}
-	
-	
-	public static void main(String[] args) {
-		List<Category> categeo=CategoryDAO.DanhSach();
-	
 	}
 
 }

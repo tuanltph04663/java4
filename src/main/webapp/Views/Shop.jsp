@@ -125,9 +125,10 @@
 					<!--features_items-->
 					<h2 class="title text-center">Features Items</h2>
 					<%
-						List<Products> list = ProductsDAO.DanhSach();
+						ProductsDAO productsDAO = new ProductsDAO();
+						List<Products> list = productsDAO.getAll();
 					%>
-					<c:forEach var="sp" items="${cart}">
+					<c:forEach var="sp" items="<%=list %>">
 						<div class="col-sm-4">
 							<div class="product-image-wrapper">
 								<div class="single-products">

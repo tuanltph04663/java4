@@ -11,8 +11,8 @@
         <property name="userName" type="string">
             <column name="UserName" length="45" not-null="true" />
         </property>
-        <property name="passWord" type="string">
-            <column name="PassWord" length="45" not-null="true" />
+        <property name="password" type="string">
+            <column name="Password" length="45" not-null="true" />
         </property>
         <property name="email" type="string">
             <column name="Email" length="100" not-null="true" />
@@ -20,11 +20,5 @@
         <property name="type" type="string">
             <column name="Type" length="45" />
         </property>
-        <set name="carts" table="Cart" inverse="true" lazy="false" fetch="join">
-            <key>
-                <column name="Account_idAccount" not-null="true" unique="true" />
-            </key>
-            <one-to-many class="vn.edu.poly.tuanltph04663.model.Cart" />
-        </set>
     </class>
 </hibernate-mapping>

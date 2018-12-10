@@ -1,8 +1,8 @@
-<%@ page import="java.util.List" %>
+<%@ page import="java.util.List"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html> 
+<html>
 <head>
-<%@include file="Common.jsp" %>
+<%@include file="Common.jsp"%>
 <jsp:include page="Common.jsp"></jsp:include>
 </head>
 <body>
@@ -10,8 +10,7 @@
 	<section id="slider"><!--slider-->
 	<div class="container">
 		<div class="row">
-			<div class="col-sm-12">
-			</div>
+			<div class="col-sm-12"></div>
 		</div>
 	</div>
 	</section>
@@ -123,7 +122,12 @@
 				<div class="features_items">
 					<!--features_items-->
 					<h2 class="title text-center">Features Items</h2>
-					<c:forEach var="sp" items="<%=ProductsDAO.SoProducts(0, 6)%>">
+					<% 
+						ProductsDAO productsDAO = new ProductsDAO();
+						List<Products> products =  productsDAO.getAll();
+					%>
+
+					<c:forEach var="sp" items="<%= products%>">
 						<div class="col-sm-4">
 							<div class="product-image-wrapper">
 								<div class="single-products">
@@ -131,14 +135,18 @@
 										<img src="images/home/${sp.image}" alt="" />
 										<h2>$ ${sp.price}</h2>
 										<p>${sp.nameProduct}</p>
-										<a href="/Assignment/InsertToCartController?add=insert&idProducts=${sp.idProducts }" class="btn btn-default add-to-cart"><i
+										<a
+											href="/Assignment/InsertToCartController?add=insert&idProducts=${sp.idProducts }"
+											class="btn btn-default add-to-cart"><i
 											class="fa fa-shopping-cart"></i>Add to cart</a>
 									</div>
 									<div class="product-overlay">
 										<div class="overlay-content">
 											<h2>$ ${sp.price}</h2>
 											<p>${sp.nameProduct}</p>
-											<a href="/Assignment/InsertToCartController?add=insert&idProducts=${sp.idProducts }" class="btn btn-default add-to-cart"><i
+											<a
+												href="/Assignment/InsertToCartController?add=insert&idProducts=${sp.idProducts }"
+												class="btn btn-default add-to-cart"><i
 												class="fa fa-shopping-cart"></i>Add to cart</a>
 										</div>
 									</div>

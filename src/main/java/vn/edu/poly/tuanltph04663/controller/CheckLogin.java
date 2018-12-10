@@ -16,13 +16,15 @@ import vn.edu.poly.tuanltph04663.model.Account;
  */
 public class CheckLogin extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-
+	private AccountDAO accountDAO;
+	
+	
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
 	public CheckLogin() {
 		super();
-		// TODO Auto-generated constructor stub
+		this.accountDAO = new AccountDAO();
 	}
 
 	/**
@@ -44,10 +46,9 @@ public class CheckLogin extends HttpServlet {
 		// TODO Auto-generated method stub
 		try {
 			HttpSession session = request.getSession();
-			String Username = request.getParameter("username");
+			String username = request.getParameter("username");
 			String password = request.getParameter("password");
-
-			Account account = AccountDAO.checkLogin(Username);
+			Account account = accountDAO.checkLogin(username, password);
 			
 			/**
 			 * if have no account in database return
@@ -56,8 +57,8 @@ public class CheckLogin extends HttpServlet {
 				return;
 			}
 			
-			if (Username.equals(account.getUserName()) && password.equals(account.getPassWord())) {
-				session.setAttribute("Account", Username);
+			if (username.equals(account.getUserName()) && password.equals(account.getPassword())) {
+				session.setAttribute("Account", username);
 				response.sendRedirect("/Assignment/Views/Shop.jsp");
 			}
 

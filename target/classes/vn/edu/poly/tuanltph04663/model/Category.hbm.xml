@@ -8,23 +8,8 @@
             <column name="idCategory" />
             <generator class="identity" />
         </id>
-        <many-to-one name="category" class="vn.edu.poly.tuanltph04663.model.Category" fetch="select">
-            <column name="CategoryFather" />
-        </many-to-one>
         <property name="nameCategory" type="string">
             <column name="NameCategory" length="45" not-null="true" />
         </property>
-        <set name="categories" table="Category" inverse="true" lazy="false" fetch="join">
-            <key>
-                <column name="CategoryFather" />
-            </key>
-            <one-to-many class="vn.edu.poly.tuanltph04663.model.Category" />
-        </set>
-        <set name="productses" table="Products" inverse="true" lazy="false" fetch="join">
-            <key>
-                <column name="Category_idCategory" not-null="true" />
-            </key>
-            <one-to-many class="vn.edu.poly.tuanltph04663.model.Products" />
-        </set>
     </class>
 </hibernate-mapping>

@@ -18,31 +18,36 @@ import vn.edu.poly.tuanltph04663.model.Products;
  */
 public class ControllerPhanTrang extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public ControllerPhanTrang() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
+	private ProductsDAO productsDAO;
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public ControllerPhanTrang() {
+		super();
+		this.productsDAO = new ProductsDAO();
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		doPost(request, response);
 	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		try (PrintWriter out = response.getWriter()) {
 			HttpSession session = request.getSession();
-			List<Products> list = ProductsDAO.DanhSach();
+			List<Products> list = productsDAO.getAll();
 			int start = 0;
 			int end;
 			if (list.size() < 12) {
@@ -57,9 +62,8 @@ public class ControllerPhanTrang extends HttpServlet {
 			if (request.getParameter("end") != null) {
 				end = Integer.parseInt(request.getParameter("end"));
 			}
-			List<Products> list1 = ProductsDAO.SoProducts(list, start, end);
 
-			session.setAttribute("cart", list1);
+			session.setAttribute("cart", list);
 
 			response.sendRedirect("/Assignment/Views/Shop.jsp");
 

@@ -11,11 +11,5 @@
         <many-to-one name="account" class="vn.edu.poly.tuanltph04663.model.Account" update="false" insert="false" fetch="select">
             <column name="Account_idAccount" not-null="true" unique="true" />
         </many-to-one>
-        <set name="details" table="Detail" inverse="true" lazy="false" fetch="join">
-            <key>
-                <column name="Cart_Account_idAccount" not-null="true" />
-            </key>
-            <one-to-many class="vn.edu.poly.tuanltph04663.model.Detail" />
-        </set>
     </class>
 </hibernate-mapping>

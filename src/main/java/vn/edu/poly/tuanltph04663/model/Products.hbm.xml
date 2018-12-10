@@ -8,9 +8,9 @@
             <column name="idProducts" />
             <generator class="identity" />
         </id>
-        <many-to-one name="category" class="vn.edu.poly.tuanltph04663.model.Category" fetch="select">
+        <property name="categoryId" type="java.lang.Integer">
             <column name="Category_idCategory" not-null="true" />
-        </many-to-one>
+        </property>
         <property name="image" type="string">
             <column name="Image" length="200" not-null="true" />
         </property>
@@ -20,11 +20,5 @@
         <property name="price" type="float">
             <column name="Price" precision="12" scale="0" not-null="true" />
         </property>
-        <set name="details" table="Detail" inverse="true" lazy="false" fetch="join">
-            <key>
-                <column name="Products_idProducts" not-null="true" />
-            </key>
-            <one-to-many class="vn.edu.poly.tuanltph04663.model.Detail" />
-        </set>
     </class>
 </hibernate-mapping>
